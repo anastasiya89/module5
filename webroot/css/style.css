@@ -71,6 +71,9 @@ h3 {color: #e12d2f!important;}
     box-shadow: 0 0 5px #d45252!important;
     border-color: #b03535!important;
 }
+.nav-justified{
+    z-index: 9!important;
+}
 #w_data{
     width: 200px!important;
 }

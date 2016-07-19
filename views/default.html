@@ -96,15 +96,44 @@
 <div class="container ">
     <div class="masthead">
 
-        <nav>
             <ul class="nav nav-justified">
                 <?php
-                foreach($data['menu'] as $data_menu){?>
-                    <li><a href="/<?=$data_menu['alias']?>"><?=$data_menu['title']?></a></li>
+
+                 for($i =1; $i<= count($data['menu']); $i++){
+                    $ul = false;
+                    $ul_close = false;
+                    foreach($data['menu'] as $data_menu){
+                        if($data_menu['id_category_menu'] == $i){
+                            if( $data_menu['id'] == $data_menu['id_category_menu']){?>
+                                <li><a href="/<?=$data_menu['alias']?>"><?=$data_menu['title']?></a>
+                            <?php
+                            }elseif($ul == false){
+                            $ul = true;
+                            $ul_close = true;
+                            ?>
+                                <ul class="nav nav-justified">
+                                     <li><a href="/<?=$data_menu['alias']?>"><?=$data_menu['title']?></a></li>
+
+                            <?php
+                            }else{?>
+                                    <li><a href="/<?=$data_menu['alias']?>"><?=$data_menu['title']?></a></li>
+                            <?php
+                            }
+                        }
+                    }
+                    if($ul_close == true){?>
+                            </ul>
+                        </li>
+                    <?php
+
+                    }else{?>
+                        </li>
+                    <?php
+                    }
+                    ?>
                 <?php
-                }?>
-
-
+                }
+                ?>
 
 
                 <?php if(Session::get('login')){?>
