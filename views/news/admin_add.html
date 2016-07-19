@@ -1,0 +1,40 @@
+<h3>Новая новость</h3></br>
+
+<form action="" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label >Категория новости</label>
+        <p>
+
+        <select size="1"  name="category_news">
+            <?php
+            foreach($data['category'] as $key => $data_categry){?>
+                <option value="<?=$data_categry[name_category]?>"><?=$data_categry[name_category]?></option>
+            <?php };?>
+        </select>
+        </p>
+    </div>
+    <div class="form-group">
+        <input type="file" name="img_news" value="img_news"id="file-field" multiple />
+    </div>
+    <div class="form-group">
+        <label for="title_news">Название новости</label>
+        <input type="text" id="title_news" name="title_news" value="" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="data_news">Дата новости</label>
+        <input id="w_data" type="date" id="data_news" name="data_news" value="" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="content_news">Текст</label>
+        <textarea name="content_news" id="content_news" rows="5" class="form-control"></textarea>
+        <script>
+            CKEDITOR.replace("content_news");
+        </script>
+    </div>
+    <div class="form-group">
+        <label for="published_news">Опубликовать</label>
+        <input type="checkbox" name="published_news" id="published_news" checked />
+    </div>
+    <input type="submit" class="btn btn-success" name="save" value="Сохранить" />
+    <input type="submit" class="btn btn-success" name="cancel" value="Отмена" />
+</form>

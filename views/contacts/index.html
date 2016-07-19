@@ -1,0 +1,13 @@
+
+<h3 class="blu">Наші контакти</h3>
+
+<b>Адреса:</b> <?=$data['сontacts'][0]['adress']?><br>
+<b>Тел.:</b> <?=$data['contacts'][0]['tel_1']?><br>
+<b>e-mail:</b> <?=$data['contacts'][0]['email']?><br>
+<h3 class="blu">Зворотнiй зв'язок</h3>
+<form action="" method="POST">
+    <input type="text" class="form-control" name="name" placeholder="Ваше iм'я"><br>
+    <input type="text" class="form-control" name="email" placeholder="Ваш e-mail"><br>
+    <textarea name="message" class="form-control"placeholder="Введіть повідомлення"></textarea><br>
+    <button class="btn btn-primary" type="submin">Відправити</button>
+</form>

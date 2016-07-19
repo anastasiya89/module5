@@ -1,0 +1,10 @@
+<h2>Все комментарии пользователя "<?=$data['page'][0]['login']?>"</h2>
+<?php
+    foreach($data['page'] as $data_page){?>
+        <p><span style="color:green"><?=$data_page['data_coment']?></span> <?=$data_page['content_coments']?></p>
+    <?php
+    }?>
+
+
+
+

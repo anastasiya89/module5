@@ -1,0 +1,16 @@
+<h2><?=$data['category'][0]['name_category'] ?> </h2>
+    <?php
+    foreach($data['category'] as $data_category){
+    ?>
+        <p><a href="/news/view/<?=$data_category['id_news']?>"><?=$data_category['title_news']?></a>
+        </p>
+    <?php
+    } ?>
+<ul class = "pagination">
+    <?php
+    for($i=1; $i<= ceil($data['count_news']/5); $i++){?>
+        <li><a href="/category/view/<?=$data['num_category']?>/<?=$i?>"><?=$i?></a> </li>
+    <?php
+    }?>
+</ul>
+

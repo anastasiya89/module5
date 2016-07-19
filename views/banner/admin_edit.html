@@ -1,0 +1,51 @@
+<h3>Новый баннер</h3></br>
+<?php
+var_dump($data['banner']['position_banner'] == 'right');?>
+<form action="" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label >Название услуги или товара</label>
+        <input type="text" name="name_banner" id="name_banner" value="<?=$data['banner']['name_banner']?>"class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label >Картинка <?=$data['banner']['img_banner']?></label><br/>
+        <label >Загрузить новую </label><br/>
+        <input type="file" name="img_banner" id="file-field" value="<?=$data['banner']['img_banner']?>" multiple />
+    </div>
+    <div class="form-group">
+        <label for="company_name">Название компании</label>
+        <input type="text" id="company_name" name="company_name" value="<?=$data['banner']['company_banner']?>" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="site_banner">Сайт компании</label>
+        <input type="text" id="site_banner" name="site_banner" value="<?=$data['banner']['site_banner']?>" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="price_banner">Цена товара или услуги в гривнях</label>
+        <input type="text" id="price_banner" name="price_banner" value="<?=$data['banner']['price_banner']?>"  />
+    </div>
+    <div class="form-group">
+        <label for="published_banner">Опубликовать</label>
+        <input type="checkbox" name="published_banner" value="<?=$data['banner']['published_banner']?>" id="published_banner" checked />
+    </div>
+    <div class="form-group">
+        <label for="published_banner">Расположение на сайте</label><br/>
+        <?php
+            if($data['banner']['position_banner'] == 'left'){?>
+                <input type="radio" name="position" value="left" checked="checked"> left<br/>
+            <?php
+            }else{?>
+                <input type="radio" name="position" value="left" > left<br/>
+            <?php
+            }
+
+            if($data['banner']['position_banner'] == 'right'){?>
+                <input type="radio" name="position" value="right" checked="checked"> right<br/>
+            <?php
+            }else{?>
+                <input type="radio" name="position" value="right" > right<br/>
+            <?php
+            }?>
+    </div>
+    <input type="submit" class="btn btn-success" name="save" value="Сохранить" />
+    <input type="submit" class="btn btn-success" name="cancel" value="Отмена" />
+</form>

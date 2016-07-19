@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script type="text/javascript" src="/webroot/js/superslide.2.1.js"></script>
+    <link rel="stylesheet" href="/webroot/css/superslide.2.1.css">
+
+
+    <link rel="stylesheet" href="/webroot/css/style.css">
+    <!--bootstrap-->
+    <link rel="stylesheet" href="/webroot/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/webroot/css/bootstrap.css">
+
+
+    <script src="/webroot/js/bootstrap.min.js"></script>
+    <!--всплывающее окно-->
+    <script type="text/javascript" src="/webroot/js/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="/webroot/css/jquery.modal.css">
+
+    <title><?=config::get('site_name')?></title>
+
+
+</head>
+<body class="<?=$data['design'][0]['color_container'] ?>">
+<?php
+//echo "<pre>";
+//print_r($data['new_news']);
+?>
+
+<!--modal vindow-->
+<div id="opn-win" style="display:none; margin: 20px!important;">
+    <form>
+        <input type="email" placeholder="Ваш электронный адрес...">
+        <input type="submit" value="Бесплатный доступ к файлам!">
+    </form>
+</div>
+<script type="text/javascript">
+    setTimeout(function() {
+        $('#opn-win').modal();
+    }, 15000);
+</script>
+<!--каруселька-->
+        <div class="slider <?= $data['design'][0]['color_head']?>" class="container"  >
+            <div class="bd">
+                <ul>
+                    <?php
+                    foreach ($data['new_news'] as $data_new_news){?>
+                        <li>
+                            <div class="left" >
+                                <a target="_blank" href="http://www.htmldrive.net">
+                                    <p><b><?=$data_new_news[title_news]?></b><br/>
+                                        <?=$data_new_news[data_news]?><br/>
+                                        </p>
+
+                                    <img src="/webroot/img/upload/<?=$data_new_news['img_news']?>" />
+                                    <p><?=$data_new_news[content_news]?></p>
+                                    </a>
+                            </div>
+                        </li>
+                    <?php } ?>
+
+                </ul>
+            </div>
+            <div class="hd">
+                <ul>
+                </ul>
+            </div>
+            <div class="pnBtn prev"> <span class="blackBg"></span> <a class="arrow" href="javascript:void(0)"></a> </div>
+            <div class="pnBtn next"> <span class="blackBg"></span> <a class="arrow" href="javascript:void(0)"></a> </div>
+        </div>
+        <script type="text/javascript">
+            jQuery(".slider .bd li").first().before( jQuery(".slider .bd li").last() );
+            jQuery(".slider").hover(function(){
+                jQuery(this).find(".arrow").stop(true,true).fadeIn(300)
+            },function(){
+                jQuery(this).find(".arrow").fadeOut(300) });
+            jQuery(".slider").slide(
+                    { titCell:".hd ul", mainCell:".bd ul", effect:"leftLoop",autoPlay:true, vis:3,autoPage:true, trigger:"click"}
+            );
+
+
+            function closeOrNot(e) {
+                if(!e) e = window.event;
+                e.cancelBubble = true;
+                e.returnValue = 'Вы действительно хотите уйти со страницы?\nВнимание: данные могут не сохраниться!\n ';
+                if (e.stopPropagation) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                }
+            }
+            window.onbeforeunload=closeOrNot;
+        </script>
+
+<div class="container ">
+    <div class="masthead">
+
+        <nav>
+            <ul class="nav nav-justified">
+                <?php
+                foreach($data['menu'] as $data_menu){?>
+                    <li><a href="/<?=$data_menu['alias']?>"><?=$data_menu['title']?></a></li>
+                <?php
+                }?>
+
+
+
+
+                <?php if(Session::get('login')){?>
+                     <li><?=Session::get('login');?><br>
+
+                             <a href="webroot/login/logout">Вихід</a></li>
+                                               <?php } else {?>
+                <li><a href="/login/">Вхід на сайт</a></li>
+                <?php }?>
+
+            </ul>
+        </nav>
+
+    </div>
+
+
+        <div class ="col-md-2">
+            <?php
+            foreach($data['banners'] as $data_banners){
+                if($data_banners['position_banner'] == 'left'){
+                    if($data_banners['published_banner'] == '1'){?>
+                        <div class="banner">
+                            <a href="<?=$data_banners['site_banner']?>">
+                                <img src="/webroot/img/banners/<?=$data_banners['img_banner']?>"/>
+                                <p><?=$data_banners['name_banner']?> "<?=$data_banners['company_banner']?>"<br/>
+                                    <span><?=$data_banners['price_banner']?>грн</span>
+                                </p>
+                            </a>
+                        </div>
+                    <?php
+                    }
+                }
+            }?>
+        </div>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron col-md-8">
+        <div class="conteiner">
+            <?php if (Session::hasFlash()){ ?>
+            <div class="alert alert-info" role="alert">
+                <?php Session::flash();?>
+            </div>
+            <?php } ?>
+        </div>
+        <div class="conteiner-fluid">
+            <div class="row">
+                <div class=".col-md-12">
+
+                    <p class="text-danger"><?=$data['content']?></p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class ="col-md-2">
+        <?php
+        foreach($data['banners'] as $data_banners){
+            if($data_banners['position_banner'] == 'right'){
+                if($data_banners['published_banner'] == '1'){?>
+                    <div class="banner">
+                        <a href="<?=$data_banners['site_banner']?>">
+                            <img src="/webroot/img/banners/<?=$data_banners['img_banner']?>"/>
+                            <p><?=$data_banners['name_banner']?> "<?=$data_banners['company_banner']?>"<br/>
+                                <span><?=$data_banners['price_banner']?>грн</span>
+                            </p>
+                        </a>
+                    </div>
+                <?php
+                }
+            }
+        }?>
+
+    </div>
+
+</div>
+    <!-- Example row of columns -->
+
+
+    <!-- Site footer -->
+    <footer class="footer">
+        <p>ОСББ "Будинок мрій", м. Київ, проспект Героїв Сталінграда, 55 &copy; 2015</p>
+    </footer>
+
+</div>
+
+
+
+</body>
+</html>

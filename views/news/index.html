@@ -1,0 +1,17 @@
+<?php
+foreach($data['news'] as $news_data){
+    if($news_data['published_news']){?>
+<div style="margin-top: 20px;">
+    <a href="/news/view/<?=$news_data['id_news']?>"><?=$news_data['title_news']?></a>
+</div>
+
+<?php }
+} ?>
+
+<ul class = "pagination">
+    <?php
+    for($i=1; $i<= ceil($data['count_news']/4); $i++){?>
+    <li><a href="/news/view/<?=$i?>"><?=$i?></a> </li>
+    <?php
+    }?>
+</ul>

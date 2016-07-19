@@ -1,0 +1,76 @@
+<h2><?=$data['news'][0]['title_news'] ?> </h2>
+<img style="width:100%" src="/webroot/img/upload/<?=$data['news'][0]['img_news']?>"/>
+<p style="color:gray"><?=$data['news'][0]['data_news']?></p>
+<hr>
+<p class=" "><?=$data['news'][0]['content_news']?></p>
+<hr>
+<p><i>Количество пользователей читающих «сейчас» эту новость:</i>
+    <span style="color:green">
+        <script>
+        function randomInteger(min, max) {
+            var rand = min + Math.random() * (max - min)
+            rand = Math.round(rand);
+            return rand;
+        }
+        setTimeout(document.write( randomInteger(1, 5) ),3000);
+        </script>
+    </span></p>
+<p><i>Общее число пользователей «прочитавших» эту новость:</i>
+    <span style="color:green">12</span></p>
+<?php if(Session::get('login')){?>
+<form action="" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="coment">Оставьте свой коментарий</label>
+        <textarea name="coment" id="coment" rows="5" class="form-control"><?=$data['news']['content_news']?></textarea>
+        <script>
+            CKEDITOR.replace("content_news");
+        </script>
+    </div>
+
+    <input type="submit" class="btn btn-success" name="save" value="Сохранить" />
+    <input type="submit" class="btn btn-success" name="cancel" value="Отмена" />
+</form>
+<?php } else {?>
+<li><a href="/login/">Вхід на сайт</a></li>
+<?php }
+    foreach($data['news']['coments'] as $data_coments){?>
+        <p><span style="color:#1b6d85"><?=$data_coments['login']?> <?=$data_coments['data_coment']?></span> <br/>
+        <?=$data_coments['content_coments']?><br/>
+         <span style="color:darkorange">Плюсы:</span> <?=$data_coments['count_pluse']?>
+        <span style="color:#2b542c">Минусы:</span><?=$data_coments['count_minuse']?>
+        <span style= "color:#1d75b3"onclick="showForm()">Ответить</span></p>
+        <form id ="answer" action="" method="POST" enctype="multipart/form-data" style="display: none">
+            <input type="hidden" name="id_coments" value="<?=$data_coments['id_coments']?>"/>
+            <input type="hidden" name="id_user" value="<?=$data_coments['user_id']?>"/>
+            <div class="form-group">
+                <label for="content_answer">Оставьте свой коментарий</label>
+                <textarea name="content_answer" id="content_answer" rows="5" class="form-control"><?=$data['news']['content_answer']?></textarea>
+                <script>
+                    CKEDITOR.replace("content_news");
+                </script>
+            </div>
+            <input type="submit" class="btn btn-success" name="answer" value="Сохранить" />
+            <input type="submit" onclick="hideForm()" class="btn btn-success"  value="Отмена" />
+        </form>
+        <?php
+        foreach($data['news']['answer'] as $data_answer){
+            if($data_answer['id_coments'] == $data_coments['id_coments']){?>
+                <p style="margin-left:40px;"><span style="color:#1b6d85"><?=$data_answer['login']?>
+                    <?=$data_answer['data_answer']?></span> <br/><?=$data_answer['content_answer']?><br/>
+                    <span style="color:darkorange">Плюсы:</span> <?=$data_answer['count_pluse']?>
+                    <span style="color:#2b542c">Минусы:</span><?=$data_answer['count_minuse']?>
+            <?php
+            }
+        } ?>
+                    <?php } ?>
+                    <script type="text/javascript">
+
+                        //Функция показа
+
+                        function hideForm(){
+                            $('#answer').hide();
+                        }
+                        function showForm(){
+                            $('#answer').show();
+                        }
+                    </script>

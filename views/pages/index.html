@@ -1,0 +1,13 @@
+<h2 style="color: #3e8f3e">Cписок топ-5 комментаторов </h2>
+   <?php
+    foreach($data['pages'] as $data_page){?>
+        <p><a href="/pages/view/<?=$data_page['user_id']?>"><?=$data_page['login']?></a></p>
+    <?php
+    }?>
+<h2 style="color: #3e8f3e">Топ-3 активных темы </h2>
+<?php
+    foreach($data['page']['top_news'] as $data_top_news){?>
+        <p><a href="/news/view/<?=$data_top_news['news_id']?>"><?=$data_top_news['title_news']?>
+        </a></p>
+    <?php
+    }?>

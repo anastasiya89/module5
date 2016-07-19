@@ -1,0 +1,26 @@
+<?php
+foreach($data['categories'] as $categories){?>
+<div style="margin-top: 20px;">
+    <a href="/category/view/<?=$categories[0]['id_category']?>">
+        <b class="text-danger"><?=$categories[0]['name_category']?></b>
+    </a>
+    <?php
+    foreach($categories as $news){
+        foreach($news as $key => $val){
+
+            if($key == 'name_category' || $key == 'id_category' || $key == 'id_news'){
+                continue;
+            }else{
+            ?>
+    <div style="margin-top: 20px;">
+                    <a href="/news/view/<?=$news['id_news']?>"><?=$val?></a>
+                </div>
+            <?php
+            }
+
+        }
+    }?>
+</div>
+<?php
+}
+?>

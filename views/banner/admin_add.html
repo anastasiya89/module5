@@ -1,0 +1,35 @@
+<h3>Новый баннер</h3></br>
+
+
+<form action="" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label >Название услуги или товара</label>
+        <input type="text" name="name_banner" id="name_banner" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <input type="file" name="img_banner" id="file-field" multiple />
+    </div>
+    <div class="form-group">
+        <label for="company_name">Название компании</label>
+        <input type="text" id="company_name" name="company_name" value="" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="site_banner">Сайт компании</label>
+        <input type="text" id="site_banner" name="site_banner" value="" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="price_banner">Цена товара или услуги в гривнях</label>
+        <input type="text" id="price_banner" name="price_banner" value=""  />
+    </div>
+    <div class="form-group">
+        <label for="published_banner">Опубликовать</label>
+        <input type="checkbox" name="published_banner" id="published_banner" checked />
+    </div>
+    <div class="form-group">
+        <label for="published_banner">Расположение на сайте</label><br/>
+        <input type="radio" name="position" value="left"> left<br/>
+        <input type="radio" name="position" value="right"> right<br/>
+    </div>
+    <input type="submit" class="btn btn-success" name="save" value="Сохранить" />
+    <input type="submit" class="btn btn-success" name="cancel" value="Отмена" />
+</form>

@@ -1,0 +1,26 @@
+<h3>Баннера</h3>
+<br>
+<div>
+
+    <a href="/admin/banner/add/"><button class="btn btn-sm btn-success">Добавить баннер</button></a>
+
+</div>
+<br>
+<table class="table table-striped" style="ьwidth:400px">
+    <?php foreach($data['banner'] as $banner_data){?>
+    <tr>
+        <td> <b><?=$banner_data['name_banner'] ?> <?=$banner_data['company_banner'] ?></b></td>
+        <td class="right">
+            <a href="/admin/banner/edit/<?=$banner_data['id_banner'] ?>">
+                <button class="btn btn-sm btn-primsry">Редактировать</button></a>
+            <?php if(Session::get('role') == 'admin'){ ?>
+            <a href="/admin/banner/delete/<?=$banner_data['id_banner'] ?>"
+               onclick="return confirmDelete();"><button class="btn btn-sm btn-warning">Удалить</button></a>
+            <?php } ?>
+        </td>
+    </tr>
+    <?php } ?>
+</table>
+
+
+

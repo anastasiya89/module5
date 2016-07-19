@@ -1,0 +1,104 @@
+
+.starter-template{
+    padding: 40px 15px;
+}
+form{
+    min-width: 200px!important;
+
+}
+
+.alert{
+
+    max: 100% !important;
+}
+
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+.CadetBlue{
+    background: CadetBlue;
+}
+.Azure{
+    background: Azure;
+}
+.yellowgreen{
+    background: yellowgreen;
+}
+
+.limegreen{
+    background: limegreen;
+}
+.banner{
+    text-align: center;
+}
+.banner>a>img{
+    width: 100%;
+}
+.banner>a>p>span{
+    color:darkorange;
+}
+.blok{
+    height:2px;
+    clear:both;
+}
+.head-responsive{
+    margin-top: 65px;
+}
+h2 {color: #3e8f3e!important;}
+h3 {color: #e12d2f!important;}
+.orange{color: orange!important;}
+.blu{color: #296091!important;}
+.left>h3{
+    margin: 0;
+}
+.blok hr{
+    color: #e12d2f;
+    height: 2px;
+    background-color: #e12d2f;
+    border: none;
+}
+.size12{
+    font-size: 12px;
+    margin-top: 30px;
+}
+.size18{
+    font-size: 18px !important;
+}
+.red_log,.red_em, .red_pas, .red_num{
+    box-shadow: 0 0 5px #d45252!important;
+    border-color: #b03535!important;
+}
+#w_data{
+    width: 200px!important;
+}
+#reg{
+    display: none;
+}
+.text14{
+    text-size: 14px!important;
+}
+
+ul>li>ul{
+    margin-left: 0px;
+     display: none;
+     position: absolute;
+     background: white;
+
+}
+
+ul>li>ul>li{
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+    border-left: 2px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-radius: 4px 4px 0 0;
+}
+ul>li:hover ul{
+    display:block;
+}
+.red{
+    color:red;
+}
