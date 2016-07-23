@@ -52,9 +52,7 @@ class App{
         } else{
             throw new Exception('Method '.$controller_method.' or class '.$controller_class.' does not exist.');
         }
-        //$menu = $view_object->menu();
-        //$new_news = $view_object->getNewNews();
-        //print_r($new_news);
+
         $loyaut_path = VIEWS_PATH.DS.$layout.'.html';
         $layout_view_object = new View(compact('content','menu','new_news','design','banners'),$loyaut_path );
         echo $layout_view_object->render();

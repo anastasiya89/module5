@@ -1,0 +1,38 @@
+<h3>Категория политика</h3>
+<br>
+
+<?php if(Session::get('role') == 'admin'){ ?>
+<form action="" method="post">
+    <table class="table table-striped " style="width: 100%;text-align: center">
+        <tr >
+            <td style="width: 2%"><b>data_coment</b></td>
+            <td style="width: 60%;text-align: left"><b>content_coments</b></td>
+            <td style="width: 25%;text-align: left"><b>title_news</b></td>
+            <td style="width: 7%"><b>is_published</b></td>
+            <!--<td colspan="2" style="width: 14%; text-align: left"><b>is_active</b></td>-->
+        </tr>
+        <?php foreach($data as $item){?>
+        <tr>
+            <td><b><?=$item['data_coment']?></b></td>
+            <td style ="text-align: left"><?=$item['content_coments']?></td>
+            <td style ="text-align: left"><?=$item['title_news']?></td>
+            <td><?php if($item['is_published']){?>
+                <input type="checkbox" name="is_published[<?=$item['id_coments']?>]"
+                       value="<?=$item['is_published']?>"checked />
+                <?php
+                }else{?>
+                <input type="checkbox" name="is_published[<?=$item['id_coments']?>]"
+                       value="<?=$item['is_published']?>" />
+                <?php
+                }?>
+                <!--<input type="text" name="is_active" size="1"value="<?=$item['is_active']?>"/>-->
+            </td>
+            <td><a href="politics/delete/<?=$item['id_coments'] ?>" onclick="return confirmDelete();">
+                <button class="btn btn-sm btn-warning">Удалить</button></a></td>
+        </tr>
+        <?php } ?>
+    </table>
+    <input type="submit" class="btn btn-success" name="save" value="Сохранить" />
+    <input type="submit" class="btn btn-success" name="cancel" value="Отмена" />
+</form>
+<?php } ?>

@@ -1,0 +1,43 @@
+<h2>Расширеный поиск новостей</h2>
+<div class="col-md-12">
+    <form action="" method="POST">
+
+        <div class="form-group col-md-12 col-sm-4 ">
+            <label for="exampleInputName2">Введине тег искуемой(ых) новости(ей)</label>
+            <input type="text" class="form-control" name="teg" value="<?=$data['user_name']?>" id="exampleInputName2" placeholder="Jane Doe">
+        </div>
+        <div class="form-group col-md-5 col-sm-4">
+            <p>Категория</p>
+            <select name="category" >
+                <?php
+                foreach($data['category'] as $data_category){?>
+                    <option selected value="<?=$data_category['id_category']?>" >
+                        <?=$data_category['name_category']?>
+                    </option>
+                <?php
+                }?>
+
+            </select>
+        </div>
+
+        <div class="form-group col-md-12 col-sm-8">
+            <p>Дата</p>
+            с <input class="w_data" type="date" name="data_from" value="" class="form-control" />
+            по <input class="w_data" type="date" name="data_to" value="" class="form-control" />
+        </div>
+        <div class="form-group col-md-12 col-sm-8">
+            <input type="submit" class="btn btn-success btn-warning" name="retrouven" value="Найти"/>
+        </div>
+    </form>
+</div>
+
+<?php
+if($data['retrouve_n']){?>
+    <h3>Результат поиска</h3>
+<?php
+}
+foreach($data['retrouve_n'] as $data_retrouve_n){?>
+    <p><a href="/news/view/<?=$data_retrouve_n['id_news']?>"><?=$data_retrouve_n['title_news']?></a> </p>
+<?php
+}
+?>

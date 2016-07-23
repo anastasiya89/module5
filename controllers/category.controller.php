@@ -13,13 +13,9 @@ class CategoryController extends Controller{
         foreach($this->data['category'] as $key => $category_id){
             $this->data['categories'][$key] =  $this->model->getByCategories($key+1);
         }
-        //echo "<pre>";
-        //print_r($this->data['category']);
-        //$this->data['pages']['menu'] = $this->model->getMenu();
     }
 
     public function view(){
-        //$this->data['pages']['menu'] = $this->model->getMenu();
         $params = App::getRouter()->getParams();
        if(isset($params[0])){
            $alias = strtolower($params[0]);
