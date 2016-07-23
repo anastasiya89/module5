@@ -152,22 +152,54 @@
 
         <div class ="col-md-2">
             <?php
-            foreach($data['banners'] as $data_banners){
+            foreach($data['banners'] as $key => $data_banners){
                 if($data_banners['position_banner'] == 'left'){
                     if($data_banners['published_banner'] == '1'){?>
-                        <div class="banner">
+                        <div class="banner" onmouseover="mouseOver()" onmouseout="mouseOut()">
                             <a href="<?=$data_banners['site_banner']?>">
                                 <img src="/webroot/img/banners/<?=$data_banners['img_banner']?>"/>
                                 <p><?=$data_banners['name_banner']?> "<?=$data_banners['company_banner']?>"<br/>
-                                    <span><?=$data_banners['price_banner']?>грн</span>
+                                    <span id="price"><?=$data_banners['price_banner']?></span>
+                                    <span>грн</span>
                                 </p>
                             </a>
                         </div>
+
                     <?php
                     }
                 }
             }?>
         </div>
+        <div id="overlay">
+
+                <h2>Купон на скидку  № <?=rand(14890011,34890011)?> </h2> Примените и получите скидку
+                <span style="color: red">10%</span><br/>
+                <br/><br/><br/>
+                <input type="submit" value=" Получить скидку! " onClick="overlayHide()">
+                <input type="submit" value=" Я не хочу скидку! " onClick="overlayHide()">
+
+        </div>
+
+    <script type="text/javascript">
+        function mouseOver()
+        {
+            document.getElementById("price").innerHTML = document.getElementById("price").innerHTML * 0.9;
+            document.getElementById("price").style.color  = 'red';
+            document.getElementById("price").style.fontSize = '36px';
+            $('#overlay').show();
+
+        }
+        function mouseOut()
+        {
+            document.getElementById("price").innerHTML = "<?=$data_banners['price_banner']?>";
+            document.getElementById("price").style.color  = 'orange';
+            document.getElementById("price").style.fontSize = '14px';
+        }
+        function overlayHide()
+        {
+            $('#overlay').hide();
+        }
+    </script>
 
     <!-- Jumbotron -->
     <div class="jumbotron col-md-8">

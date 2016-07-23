@@ -105,3 +105,15 @@ ul>li:hover ul{
 .red{
     color:red;
 }
+#overlay{
+    width:60%;
+    height: 20%;
+    position: relative;
+    margin-left: 15%;
+    top:0;
+    left:0;
+    z-index: 2;
+    background: white;
+    border: 2px solid #3e8f3e;
+    text-align: center;
+}
