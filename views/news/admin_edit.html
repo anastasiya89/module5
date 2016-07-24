@@ -5,6 +5,8 @@ echo "<pre>";
 
 print_r($data['category']);
 echo "<br>";
+
+echo "<pre>";
 print_r($data['news']);
 */
 ?>
@@ -15,8 +17,8 @@ print_r($data['news']);
         <p>
 
             <select size="1"  name="category_news">
-                <option selected value="<?=$data['news']['id_category'] ?> ">
-                    <?=$data['category'][$data['news']['id_category']-1]['name_category']?>
+                <option selected value="<?=$data['news'][0]['id_category'] ?> ">
+                    <?=$data['category'][$data['news'][0]['id_category']-1]['name_category']?>
                 </option>
                  <?php foreach($data['category'] as $data_categry){
                     if($data_categry['id_category'] == $data['news']['id_category']){
@@ -31,20 +33,21 @@ print_r($data['news']);
         </p>
     </div>
     <div class="form-group">
-        <input type="file" name="img_news" value="<?=$data['news']['img_news']?>"id="file-field" multiple />
-        <p><?=$data['news']['img_news']?></p>
+        <input type="file" name="img_news" value="<?=$data['news'][0]['img_news']?>"id="file-field" multiple />
+        <p><?=$data['news'][0]['img_news']?></p>
+        <input type="hidden" name="img_news_h" value="<?=$data['news'][0]['img_news']?>"/>
     </div>
     <div class="form-group">
         <label for="title_news">Название новости</label>
-        <input type="text" id="title_news" name="title_news" value="<?=$data['news']['title_news']?>" class="form-control" />
+        <input type="text" id="title_news" name="title_news" value="<?=$data['news'][0]['title_news']?>" class="form-control" />
     </div>
     <div class="form-group">
         <label for="data_news">Дата новости</label>
-        <input type="date" id="data_news" name="data_news" value="<?=$data['news']['data_news']?>" class="form-control" />
+        <input type="date" id="data_news" name="data_news" value="<?=$data['news'][0]['data_news']?>" class="form-control" />
     </div>
     <div class="form-group">
         <label for="content_news">Текст</label>
-        <textarea name="content_news" id="content_news" rows="5" class="form-control"><?=$data['news']['content_news']?></textarea>
+        <textarea name="content_news" id="content_news" rows="5" class="form-control"><?=$data['news'][0]['content_news']?></textarea>
         <script>
             CKEDITOR.replace("content_news");
         </script>
@@ -52,7 +55,7 @@ print_r($data['news']);
     <div class="form-group">
         <label for="published_news">Опубликовать</label>
         <input type="checkbox" name="published_news" id="published_news"
-        <?php if($data['news']['published_news']){ ?> checked <?php } ?>/>
+        <?php if($data['news'][0]['published_news']){ ?> checked <?php } ?>/>
     </div>
     <input type="submit" class="btn btn-success" name="save" value="Сохранить" />
     <input type="submit" class="btn btn-success" name="cancel" value="Отмена" />

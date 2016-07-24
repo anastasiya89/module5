@@ -41,8 +41,14 @@ class Banners extends Model{
         $price_banner = $this->db->escape($data['price_banner']);
         $site_banner = $this->db->escape($data['site_banner']);
         $position = $this->db->escape($data['position']);
-        $img_banner = $files['img_banner']['name'];
         $is_published = isset($data['published_banner']) ? 1 : 0;
+
+        if($files['img_news']['name']) {
+            $img_banner = $files['img_banner']['name'];
+        }else{
+            $img_banner = $this->db->escape($data['img_banner_h']);
+        }
+
 
         if(!$id){
             $sql = "

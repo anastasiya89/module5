@@ -92,27 +92,7 @@ class Newses extends Model{
 
         return $this->db->query($sql);
     }
-/*
-    public function getMenu(){
-        $sql = "SELECT id, title, id_category_menu, alias FROM pages ";
-        $sel = $this->db->query($sql);
-        foreach($sel as $arr){
-            if($arr['id'] == $arr['id_category_menu']){
-                $menu[] = $this->arrMenu($arr['id'],$sel);
-            }
-        }
-        return $menu;
-    }
 
-    public function arrMenu($id, $arr){
-        foreach($arr as $val){
-            if($id == $val['id_category_menu']){
-                $menu[$id][$val['alias']] = $val['title'];
-            }
-        }
-        return $menu[$id];
-    }
-*/
     public function save($data, $files = null, $id = 0){
         if(!isset($data['content_news']) || !isset($data['title_news'] )
             || !isset($data['category_news']) || !isset($data['data_news'])){
@@ -138,8 +118,14 @@ class Newses extends Model{
         $data_news = $this->db->escape($data['data_news']);
         $id_category = $this->db->escape($data['category_news']);
         $content_news = $this->db->escape($data['content_news']);
-        $img_news = $files['img_news']['name'];
         $is_published = isset($data['published_news']) ? 1 : 0;
+
+        if($files['img_news']['name']) {
+            $img_news = $files['img_news']['name'];
+        }else{
+            $img_news = $this->db->escape($data['img_news_h']);
+        }
+
 
         if(!$id){
             $sql = "

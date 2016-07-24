@@ -106,6 +106,7 @@ ul>li:hover ul{
     color:red;
 }
 #overlay{
+    display: none;
     width:60%;
     height: 20%;
     position: relative;

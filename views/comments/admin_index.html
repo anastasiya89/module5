@@ -1,0 +1,26 @@
+<h3>Все комментарии</h3>
+<br>
+<div>
+
+    <a href="/admin/comments/add/"><button class="btn btn-sm btn-success">Добавить комментарий</button></a>
+
+</div>
+
+<br>
+<table class="table table-striped" style="ьwidth:400px">
+    <?php foreach($data['comment'] as $comment_data){?>
+    <tr>
+        <td> <b><?=$comment_data ['content_coments'] ?></b></td>
+        <td class="right">
+            <a href="/admin/comments/edit/<?=$comment_data['id_coments'] ?>"><button class="btn btn-sm btn-primsry">Редактировать</button></a>
+            <?php if(Session::get('role') == 'admin'){ ?>
+            <a href="/admin/comments/delete/<?=$comment_data['id_coments'] ?>"
+               onclick="return confirmDelete();"><button class="btn btn-sm btn-warning">Удалить</button></a>
+            <?php } ?>
+        </td>
+    </tr>
+    <?php } ?>
+</table>
+
+
+

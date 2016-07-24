@@ -7,6 +7,8 @@ var_dump($data['banner']['position_banner'] == 'right');?>
         <input type="text" name="name_banner" id="name_banner" value="<?=$data['banner']['name_banner']?>"class="form-control"/>
     </div>
     <div class="form-group">
+
+        <input type="hidden" name="img_banner_h" value="<?=$data['banner']['img_banner']?>"/>
         <label >Картинка <?=$data['banner']['img_banner']?></label><br/>
         <label >Загрузить новую </label><br/>
         <input type="file" name="img_banner" id="file-field" value="<?=$data['banner']['img_banner']?>" multiple />

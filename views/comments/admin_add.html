@@ -1,0 +1,61 @@
+<h3>Новый комментарий</h3></br>
+<?php
+/*
+echo "<pre>";
+
+print_r($data['category']);
+echo "<br>";
+
+echo "<pre>";
+print_r($data['comment']);
+*/
+?>
+
+<form action="" method="POST">
+    <input type="hidden" name="id_comment" value="<?=$data['comment']['id_coments']?>"/>
+    <div class="form-group">
+        <label >user_id</label>
+        <p>
+            <select size="1"  name="user_id">
+                <?php foreach($data['user'] as $data_user){?>
+                    <option value="<?=$data_user['id_user']?>">
+                        <?=$data_user['login']?>
+                    </option>
+                <?php
+                }?>
+            </select>
+        </p>
+    </div>
+    <div class="form-group">
+        <label >news_id</label>
+        <p>
+            <select size="1"  name="news_id" style="max-width: 200px">
+                <?php foreach($data['news'] as $data_news){?>
+                    <option value="<?=$data_news['id_news']?>">
+                        <?=$data_news['title_news']?>
+                    </option>
+                <?php
+                }?>
+            </select>
+        </p>
+    </div>
+
+    <div class="form-group">
+        <label for="data_coment">Дата комментария</label>
+        <input type="date" id="data_coment" name="data_coment" value="" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="content_coments">Текст</label>
+        <textarea name="content_coments" id="content_coments" rows="5" class="form-control"></textarea>
+        <script>
+            CKEDITOR.replace("content_coments");
+        </script>
+    </div>
+    <div class="form-group">
+        <label for="is_published">Опубликовать</label>
+        <input type="checkbox" name="is_published" id="is_published" />
+    </div>
+    <input type="submit" class="btn btn-success" name="save" value="Сохранить" />
+    <input type="submit" class="btn btn-success" name="cancel" value="Отмена" />
+</form>
+
