@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ua">
 <head>
@@ -42,62 +41,68 @@
     }, 15000);
 </script>
 <!--каруселька-->
-        <div class="slider <?= $data['design'][0]['color_head']?>" class="container"  >
-            <div class="bd">
-                <ul>
-                    <?php
+<div class="slider <?= $data['design'][0]['color_head']?>" class="container"  >
+    <div class="bd">
+        <ul>
+            <?php
                     foreach ($data['new_news'] as $data_new_news){?>
-                        <li>
-                            <div class="left" >
-                                <a target="_blank" href="http://www.htmldrive.net">
-                                    <p><b><?=$data_new_news[title_news]?></b><br/>
-                                        <?=$data_new_news[data_news]?><br/>
-                                        </p>
+            <li>
+                <div class="left" >
+                    <a target="_blank" href="http://www.htmldrive.net">
+                        <p><b><?=$data_new_news[title_news]?></b><br/>
+                            <?=$data_new_news[data_news]?><br/>
+                        </p>
 
-                                    <img src="/webroot/img/upload/<?=$data_new_news['img_news']?>" />
-                                    <p><?=$data_new_news[content_news]?></p>
-                                    </a>
-                            </div>
-                        </li>
-                    <?php } ?>
+                        <img src="/webroot/img/upload/<?=$data_new_news['img_news']?>" />
+                        <p><?=$data_new_news[content_news]?></p>
+                    </a>
+                </div>
+            </li>
+            <?php } ?>
 
-                </ul>
-            </div>
-            <div class="hd">
-                <ul>
-                </ul>
-            </div>
-            <div class="pnBtn prev"> <span class="blackBg"></span> <a class="arrow" href="javascript:void(0)"></a> </div>
-            <div class="pnBtn next"> <span class="blackBg"></span> <a class="arrow" href="javascript:void(0)"></a> </div>
-        </div>
-        <script type="text/javascript">
-            jQuery(".slider .bd li").first().before( jQuery(".slider .bd li").last() );
-            jQuery(".slider").hover(function(){
-                jQuery(this).find(".arrow").stop(true,true).fadeIn(300)
-            },function(){
-                jQuery(this).find(".arrow").fadeOut(300) });
-            jQuery(".slider").slide(
-                    { titCell:".hd ul", mainCell:".bd ul", effect:"leftLoop",autoPlay:true, vis:3,autoPage:true, trigger:"click"}
-            );
+        </ul>
+    </div>
+    <div class="hd">
+        <ul>
+        </ul>
+    </div>
+    <div class="pnBtn prev"> <span class="blackBg"></span> <a class="arrow" href="javascript:void(0)"></a> </div>
+    <div class="pnBtn next"> <span class="blackBg"></span> <a class="arrow" href="javascript:void(0)"></a> </div>
+</div>
+<script type="text/javascript">
+    jQuery(".slider .bd li").first().before( jQuery(".slider .bd li").last() );
+    jQuery(".slider").hover(function(){
+        jQuery(this).find(".arrow").stop(true,true).fadeIn(300)
+    },function(){
+        jQuery(this).find(".arrow").fadeOut(300) });
+    jQuery(".slider").slide(
+            { titCell:".hd ul", mainCell:".bd ul", effect:"leftLoop",autoPlay:true, vis:3,autoPage:true, trigger:"click"}
+    );
 
 
-            function closeOrNot(e) {
-                if(!e) e = window.event;
-                e.cancelBubble = true;
-                e.returnValue = 'Вы действительно хотите уйти со страницы?\nВнимание: данные могут не сохраниться!\n ';
-                if (e.stopPropagation) {
-                    e.stopPropagation();
-                    e.preventDefault();
-                }
-            }
-            window.onbeforeunload=closeOrNot;
-        </script>
+    function closeOrNot(e) {
+        if(!e) e = window.event;
+        e.cancelBubble = true;
+        e.returnValue = 'Вы действительно хотите уйти со страницы?\nВнимание: данные могут не сохраниться!\n ';
+        if (e.stopPropagation) {
+            e.stopPropagation();
+            e.preventDefault();
+        }
+    }
+    window.onbeforeunload=closeOrNot;
+</script>
 
 <div class="container ">
+    <div class="right">
+        <form name = "search" action="/search/" method="post">
+            <input type="text" name ="word" value="" size="15"/>
+            <input type="submit" name="bsearch" value="Найти" size="4"/>
+        </form>
+    </div>
     <div class="masthead">
-
-            <ul class="nav nav-justified">
-                <?php
+        <nav>
+        <ul class="nav nav-justified">
+            <?php
 
                  for($i =1; $i<= count($data['menu']); $i++){
                     $ul = false;
@@ -105,80 +110,80 @@
                     foreach($data['menu'] as $data_menu){
                         if($data_menu['id_category_menu'] == $i){
                             if( $data_menu['id'] == $data_menu['id_category_menu']){?>
-                                <li><a href="/<?=$data_menu['alias']?>"><?=$data_menu['title']?></a>
-                            <?php
+            <li><a href="/<?=$data_menu['alias']?>"><?=$data_menu['title']?></a>
+                <?php
                             }elseif($ul == false){
                             $ul = true;
                             $ul_close = true;
                             ?>
-                                <ul class="nav nav-justified">
-                                     <li><a href="/<?=$data_menu['alias']?>"><?=$data_menu['title']?></a></li>
+                <ul class="nav nav-justified">
+                    <li><a href="/<?=$data_menu['alias']?>"><?=$data_menu['title']?></a></li>
 
-                            <?php
+                    <?php
                             }else{?>
-                                    <li><a href="/<?=$data_menu['alias']?>"><?=$data_menu['title']?></a></li>
-                            <?php
+                    <li><a href="/<?=$data_menu['alias']?>"><?=$data_menu['title']?></a></li>
+                    <?php
                             }
                         }
                     }
                     if($ul_close == true){?>
-                            </ul>
-                        </li>
-                    <?php
+                </ul>
+            </li>
+            <?php
 
                     }else{?>
-                        </li>
-                    <?php
+            </li>
+            <?php
                     }
                     ?>
-                <?php
+            <?php
                 }
                 ?>
 
 
-                <?php if(Session::get('login')){?>
-                     <li><?=Session::get('login');?><br>
+            <?php if(Session::get('login')){?>
+            <li><?=Session::get('login');?><br>
 
-                             <a href="webroot/login/logout">Вихід</a></li>
-                                               <?php } else {?>
-                <li><a href="/login/">Вхід на сайт</a></li>
-                <?php }?>
+                <a href="webroot/login/logout">Вихід</a></li>
+            <?php } else {?>
+            <li><a href="/login/">Вхід на сайт</a></li>
+            <?php }?>
 
-            </ul>
+        </ul>
         </nav>
 
     </div>
 
 
-        <div class ="col-md-2">
-            <?php
+    <div class ="col-md-2">
+        <?php
             foreach($data['banners'] as $key => $data_banners){
-                if($data_banners['position_banner'] == 'left'){
-                    if($data_banners['published_banner'] == '1'){?>
-                        <div class="banner" onmouseover="mouseOver()" onmouseout="mouseOut()">
-                            <a href="<?=$data_banners['site_banner']?>">
-                                <img src="/webroot/img/banners/<?=$data_banners['img_banner']?>"/>
-                                <p><?=$data_banners['name_banner']?> "<?=$data_banners['company_banner']?>"<br/>
-                                    <span id="price"><?=$data_banners['price_banner']?></span>
-                                    <span>грн</span>
-                                </p>
-                            </a>
-                        </div>
+        if($data_banners['position_banner'] == 'left'){
+        if($data_banners['published_banner'] == '1'){?>
+        <div class="banner" onmouseover="mouseOver()" onmouseout="mouseOut()">
+            <a href="<?=$data_banners['site_banner']?>">
+                <img src="/webroot/img/banners/<?=$data_banners['img_banner']?>"/>
+                <p><?=$data_banners['name_banner']?> "<?=$data_banners['company_banner']?>"<br/>
+                    <span id="price"><?=$data_banners['price_banner']?></span>
+                    <span>грн</span>
+                </p>
+            </a>
+        </div>
 
-                    <?php
+        <?php
                     }
                 }
             }?>
-        </div>
-        <div id="overlay">
+    </div>
+    <div id="overlay">
 
-                <h2>Купон на скидку  № <?=rand(14890011,34890011)?> </h2> Примените и получите скидку
-                <span style="color: red">10%</span><br/>
-                <br/><br/><br/>
-                <input type="submit" value=" Получить скидку! " onClick="overlayHide()">
-                <input type="submit" value=" Я не хочу скидку! " onClick="overlayHide()">
+        <h2>Купон на скидку  № <?=rand(14890011,34890011)?> </h2> Примените и получите скидку
+        <span style="color: red">10%</span><br/>
+        <br/><br/><br/>
+        <input type="submit" value=" Получить скидку! " onClick="overlayHide()">
+        <input type="submit" value=" Я не хочу скидку! " onClick="overlayHide()">
 
-        </div>
+    </div>
 
     <script type="text/javascript">
         function mouseOver()
@@ -186,7 +191,7 @@
             document.getElementById("price").innerHTML = document.getElementById("price").innerHTML * 0.9;
             document.getElementById("price").style.color  = 'red';
             document.getElementById("price").style.fontSize = '36px';
-            $('#overlay').show();
+            $('#overlay').show(1000);
 
         }
         function mouseOut()
@@ -197,7 +202,7 @@
         }
         function overlayHide()
         {
-            $('#overlay').hide();
+            $('#overlay').hide(1000);
         }
     </script>
 
@@ -227,15 +232,15 @@
         foreach($data['banners'] as $data_banners){
             if($data_banners['position_banner'] == 'right'){
                 if($data_banners['published_banner'] == '1'){?>
-                    <div class="banner">
-                        <a href="<?=$data_banners['site_banner']?>">
-                            <img src="/webroot/img/banners/<?=$data_banners['img_banner']?>"/>
-                            <p><?=$data_banners['name_banner']?> "<?=$data_banners['company_banner']?>"<br/>
-                                <span><?=$data_banners['price_banner']?>грн</span>
-                            </p>
-                        </a>
-                    </div>
-                <?php
+        <div class="banner">
+            <a href="<?=$data_banners['site_banner']?>">
+                <img src="/webroot/img/banners/<?=$data_banners['img_banner']?>"/>
+                <p><?=$data_banners['name_banner']?> "<?=$data_banners['company_banner']?>"<br/>
+                    <span><?=$data_banners['price_banner']?>грн</span>
+                </p>
+            </a>
+        </div>
+        <?php
                 }
             }
         }?>
@@ -243,13 +248,13 @@
     </div>
 
 </div>
-    <!-- Example row of columns -->
+<!-- Example row of columns -->
 
 
-    <!-- Site footer -->
-    <footer class="footer">
-        <p>Anastasiya Garalova &copy; 2016</p>
-    </footer>
+<!-- Site footer -->
+<footer class="footer">
+    <p>Anastasiya Garalova &copy; 2016</p>
+</footer>
 
 </div>
 

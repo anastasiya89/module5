@@ -1,0 +1,9 @@
+<h2>Результат поиска</h2>
+
+<?php
+if($data['search']){
+    foreach($data['search'] as $data_search){?>
+<p> <?=$data_search['title_news']?></p>
+<?php
+    }
+}?>
