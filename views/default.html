@@ -20,7 +20,41 @@
 
     <title><?=config::get('site_name')?></title>
 
-
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            var availableTags = [
+                "Министерство туризма отметит лучшие курорты Таиланда",
+                "Два курорта Таиланда вошли в рейтинг красивейших мест Азии",
+                " Conde Nast Traveler",
+                "Безопасность тайских авиалиний доказана специалистами",
+                "Тайский остров попал в десятку лучших на планете",
+                "SAYAMA Travel ",
+                "SAYAMA Travel Group приглашает на работу отельных гидов",
+                "В отеле Six Senses Samui проходит акция «Бесплатные ночи»",
+                "Six Senses Samui",
+                "В Таиланде пройдет Amazing Thailand Grand Sale",
+                "Amazing Thailand Grand Sale",
+                "Специальное летнее предложение от компании SAYAMA Travel",
+                "Добираться из Владивостока в Таиланд станет легче",
+                "из Владивостока в Таиланд",
+                "JavaScript",
+                "Lisp",
+                "Perl",
+                "PHP",
+                "Python",
+                "Ruby",
+                "Scala",
+                "Scheme"
+            ];
+            $( "#tags" ).autocomplete({
+                source: availableTags
+            });
+        } );
+    </script>
 </head>
 <body class="<?=$data['design'][0]['color_container'] ?>">
 <?php
@@ -95,10 +129,11 @@
 <div class="container ">
     <div class="right">
         <form name = "search" action="/search/" method="post">
-            <input type="text" name ="word" value="" size="15"/>
+            <input type="text" id="tags" name ="word" value="" size="15"/>
             <input type="submit" name="bsearch" value="Найти" size="4"/>
         </form>
     </div>
+
     <div class="masthead">
         <nav>
         <ul class="nav nav-justified">
