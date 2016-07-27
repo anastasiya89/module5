@@ -8,8 +8,8 @@
     } ?>
 <ul class = "pagination">
     <?php
-    for($i=1; $i<= ceil($data['count_news']/5); $i++){?>
-        <li><a href="/category/view/<?=$data['num_category']?>/<?=$i?>"><?=$i?></a> </li>
+    for($i=1; $i<= ceil($data['count_news']/2); $i++){?>
+        <li><a href="/category/view/<?=$data['params_0']?>/<?=$i?>"><?=$i?></a> </li>
     <?php
     }?>
 </ul>

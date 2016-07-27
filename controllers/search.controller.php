@@ -15,8 +15,6 @@ class SearchController extends Controller
     {
         if($_POST['bsearch']){
             if($_POST['word']){
-                //id_user = Session::get('login');
-                echo $_POST['word'];
                 $word = $_POST['word'];
                 $result = $this->model->getSearch($word);
 
@@ -25,9 +23,6 @@ class SearchController extends Controller
                 }else{
                     Session::setFlash('По вашему запросу ничего не найдено!');
                 }
-                //Router::redirect('/search/');
-                //$this->data['words'] = $this->model->getWords();
-
             }else{
                 Session::setFlash('Введите слово');
             }

@@ -14,14 +14,19 @@ class Categories extends Model{
         return isset($result[0]) ? $result[0] : null;
     }
 
-    public function getByAlias($page){
+    public function getByAlias($alias, $page = null){
         $page = (int)$page;
-        $offset = $page * 2;
+        if($page == null){
+            $offset = 1;
+        }else{
+            $offset = $page * 2 - 2;
+        }
+
         $sql = "SELECT n.title_news, c.name_category, n.id_news
                 FROM news n
                 JOIN category c
                 on n.id_category = c.id_category
-                WHERE  n.id_category = '{$page}'
+                WHERE  n.id_category = '{$alias}'
                  ORDER BY n.data_news
                  LIMIT $offset, 2";
         return $this->db->query($sql);

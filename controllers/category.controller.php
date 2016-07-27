@@ -17,10 +17,14 @@ class CategoryController extends Controller{
 
     public function view(){
         $params = App::getRouter()->getParams();
+        //echo "<pre>";
+       // print_r($params);
        if(isset($params[0])){
            $alias = strtolower($params[0]);
-           $this->data['category'] = $this->model->getByAlias($alias);
+           $page = strtolower($params[1]);
+           $this->data['category'] = $this->model->getByAlias($alias, $page);
            $this->data['count_news'] = $this->model->getByCount($alias);
+           $this->data['params_0'] = $params[0];
 
         }
     }
